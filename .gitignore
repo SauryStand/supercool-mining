@@ -108,7 +108,7 @@ venv.bak/
 */.DS_Store
 
 *[Da]ata/*
-
+/data
 *。label
 *.eml
 *.csv
