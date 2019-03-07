@@ -108,3 +108,8 @@ venv.bak/
 */.DS_Store
 
 *[Da]ata/*
+
+*。label
+*.eml
+*.csv
+icon
