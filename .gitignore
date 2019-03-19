@@ -114,3 +114,6 @@ dataset/*
 *.eml
 *.csv
 Icon
+
+
+.ipynb_checkpoints/*

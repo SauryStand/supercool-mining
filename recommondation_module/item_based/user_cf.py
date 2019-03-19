@@ -1,4 +1,4 @@
-# coding = utf-8
+# -*- coding:utf-8 -*-
 
 # 基于用户的协同过滤推荐算法实现
 import random
@@ -135,7 +135,7 @@ class UserBasedCF():
 
 
 if __name__ == '__main__':
-    rating_file = 'D:\\学习资料\\推荐系统\\ml-latest-small\\ratings.csv'
+    rating_file = '/Users/voyager2511/Documents/source_codes/others/supercool-mining/dataset/data/ml-latest-small/ratings.csv'
     userCF = UserBasedCF()
     userCF.get_dataset(rating_file)
     userCF.calc_user_sim()
