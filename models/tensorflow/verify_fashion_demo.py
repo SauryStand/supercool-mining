@@ -106,7 +106,7 @@ plot_image(i, predictions, test_labels, test_images)
 plt.subplot(1,2,2)
 plot_value_array(i, predictions,  test_labels)
 
-# Plot the first X test images, their predicted label, and the true label
+# Plot the first X 20news-bydate-test images, their predicted label, and the true label
 # Color correct predictions in blue, incorrect predictions in red
 num_rows = 5
 num_cols = 3
@@ -118,7 +118,7 @@ for i in range(num_images):
   plt.subplot(num_rows, 2*num_cols, 2*i+2)
   plot_value_array(i, predictions, test_labels)
 
-# Grab an image from the test dataset
+# Grab an image from the 20news-bydate-test dataset
 img = test_images[0]
 
 img.shape

@@ -24,16 +24,16 @@ while (cap.isOpened()):
     if (ret != True):
         break
     if (frameId % math.floor(frameRate) == 0):
-        filename = "test%d.jpg" % count;
+        filename = "20news-bydate-test%d.jpg" % count;
         count += 1
         cv2.imwrite(filename, frame)
 cap.release()
 print ("Done!")
 
 '''
-After extracting the frames from the new video, we will now load the test.csv file which contains the names of each extracted frame
+After extracting the frames from the new video, we will now load the 20news-bydate-test.csv file which contains the names of each extracted frame
 '''
-test = pd.read_csv('data/test.csv')
+test = pd.read_csv('data/20news-bydate-test.csv')
 
 X = []  # creating an empty array
 for img_name in test.Image_ID:
@@ -90,7 +90,7 @@ model.add(Dense(3, activation='softmax'))    # output layer
 model.summary()
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 # iii. Training the model
-#model.fit(train, y_train, epochs=100, validation_data=(X_valid, y_valid)
+#model.fit(20news-bydate-train, y_train, epochs=100, validation_data=(X_valid, y_valid)
 
 predictions = model.predict_classes(test_image)
 

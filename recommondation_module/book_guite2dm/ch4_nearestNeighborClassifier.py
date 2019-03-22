@@ -176,7 +176,7 @@ def unitTest():
 
 
 def template(training_filename, test_filename):
-    """Test the classifier on a test set of data"""
+    """Test the classifier on a 20news-bydate-test set of data"""
     classifier = Classifier(training_filename)
     f = open(test_filename)
     lines = f.readlines()
@@ -208,5 +208,5 @@ if __name__ == '__main__':
     template('athletesTrainingSet.txt', 'athletesTestSet.txt')
 # r = Classifier.classify()
 
-# test('irisTrainingSet.data', 'irisTestSet.data')
-#  test("mpgTrainingSet.txt", "mpgTestSet.txt")
+# 20news-bydate-test('irisTrainingSet.data', 'irisTestSet.data')
+#  20news-bydate-test("mpgTrainingSet.txt", "mpgTestSet.txt")

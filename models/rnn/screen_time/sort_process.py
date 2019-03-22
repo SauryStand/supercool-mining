@@ -92,7 +92,7 @@ model.fit(train, y_train, epochs=100, validation_data=(X_valid, y_valid))
 
 
 
-#next step was train the model
+#next step was 20news-bydate-train the model
 count = 0
 videoFile = "data/countData/Tom and Jerry 3.mp4"
 cap = cv2.VideoCapture(videoFile)
@@ -104,13 +104,13 @@ while (cap.isOpened()):
     if (ret != True):
         break
     if (frameId % math.floor(frameRate) == 0):
-        filename = "data/countData/test%d.jpg" % count;
+        filename = "data/countData/20news-bydate-test%d.jpg" % count;
         count += 1
         cv2.imwrite(filename, frame)
 cap.release()
 print ("Done!")
 
-test = pd.read_csv('data/test.csv')
+test = pd.read_csv('data/20news-bydate-test.csv')
 #pre array
 test_image = []
 for img_name in test.Image_ID:

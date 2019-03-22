@@ -197,7 +197,7 @@ def train_data():
     info['file_count'] = file_count
     info['ham_file_count'] = ham_file_count
     info['spam_file_count'] = spam_file_count
-    print('train email info : ', info)
+    print('20news-bydate-train email info : ', info)
     # 要重新写过这段代码逻辑才行，这样写不对, 并没有真正地统计出来正确的数量
     word_df = pd.DataFrame([ham_tf, spam_tf, word_idf]).T
     word_df.columns = ['ham_tf', 'spam_tf', 'word_idf']

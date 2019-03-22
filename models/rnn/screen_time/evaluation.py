@@ -46,7 +46,7 @@ while (cap.isOpened()):
     if (ret != True):
         break
     if (frameId % math.floor(frameRate) == 0):
-        filename = "data/countData/test%d.jpg" % count;
+        filename = "data/countData/20news-bydate-test%d.jpg" % count;
         count += 1
         cv2.imwrite(filename, frame)
 cap.release()
