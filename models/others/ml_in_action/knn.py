@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -20,7 +21,7 @@ def plot(x, y):
     plt.legend(loc='upper left')
     plt.show()
 
-data, label = load_data('datingTestSet2.txt')
+data, label = load_data('../../../dataset/ml_in_action/datingTestSet2.txt')
 print(data.shape)
 print(label.shape)
 
