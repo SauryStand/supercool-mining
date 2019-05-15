@@ -26,3 +26,10 @@ print(data.shape)
 print(label.shape)
 
 plot(data, label)
+
+
+
+
+class KNearestNeighbor(obj):
+    def __init__(self):
+        pass
