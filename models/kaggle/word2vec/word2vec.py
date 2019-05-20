@@ -353,8 +353,6 @@ from gensim.models.word2vec import Word2Vec
 model = Word2Vec.load_word2vec_format("GoogleNews-vectors-negative300.bin", binary=True)
 
 
-
-
 # 测试预测效果
 
 print(model.most_similar(positive=["woman", "king"], negative=["man"], topn=5))
