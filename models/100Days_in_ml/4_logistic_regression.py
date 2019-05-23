@@ -19,9 +19,6 @@ sc = StandardScaler()
 X_train = X_train.astype(float)
 X_test = X_test.astype(float)
 X_train = sc.fit(X_train)
-#X_test = sc.fit(X_test)
-
-
 
 from sklearn.linear_model import LogisticRegression
 classifier = LogisticRegression()

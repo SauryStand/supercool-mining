@@ -38,3 +38,23 @@ _, shares, price, _ = data
 
 
 
+str1 = "k:1|k1:2|k2:3|k3:4"
+
+def str2dict(str1):
+    dict = {}
+    for items in str1.split('|'):
+        key, value = items.split(':')
+        dict[key] = value
+    return dict
+
+#字典推导式
+d = {k:int(v) for t in str1.split('|') for k, v in (t.split(':'), )}
+
+print(d)
+
+
+
+
+
+
+
