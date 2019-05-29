@@ -13,6 +13,8 @@ def createDataSet():
     #            [0, 1, 'no'],
     #            [0, 1, 'no']]
     # featureNames = ['no surfacing', 'flippers']  # 不浮出水面是否存活 ，有无脚蹼
+    # 信贷情况：0代表一般，1代表好，2代表非常好
+    # 年龄：0代表青年，1代表中年，2代表老年；
     dataSet = [[0, 0, 0, 0, 'no'],  # 数据集
                [0, 0, 0, 1, 'no'],
                [0, 1, 0, 1, 'yes'],
@@ -50,9 +52,7 @@ def entropy(dataSet):
         if currentlabel not in labelCounts.keys():  # 当前标签
             labelCounts[currentlabel] = 0  # default value as 0
         labelCounts[currentlabel] += 1  # count
-
-    print('labelcount is ', labelCounts)
-
+    #print('labelcount is ', labelCounts)
     entropy = 0.0
     for key in labelCounts:
         probability = float(labelCounts[key]) / num  # 当前key的概率
@@ -66,8 +66,8 @@ print('old dataset is ', myData)
 entropy1 = entropy(myData)
 print('my test entropy should be 0.97095 :', entropy1)
 
-# 添加一类，mabey,yes,no   ====熵越高，表明数据越混乱
-myData[0][-1] = "mabey"
+# 添加一类，maybe,yes,no   ====熵越高，表明数据越混乱
+myData[0][-1] = "maybe"
 print('new dataset is ', myData)
 
 
