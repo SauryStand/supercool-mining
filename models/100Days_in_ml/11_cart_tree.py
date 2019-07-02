@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 
+#用一个全局变量，来保存最优的划分数据
+bestFeatures=[]
+bestValues=[]
 
 def loadDataSet(fileName):
     dataMat = []
@@ -53,44 +56,37 @@ def chooseBestSplit(dataSet, leafType=regLeaf, errType=regErr, ops=(1, 4)):
     tolS = ops[0]  # 均方差变化的最小幅度，用于预剪枝
     tolN = ops[1]  # 划分的数据集的最小size
 
-    if len(set(dataSet[:, -1].T.tolist()[0])) == 1:
+    if len(set(dataSet[:, -1].T.tolist()[0])) == 1:  # exit condition 1:
         # 如果所有的y的值都相等，这里用set去重,直接返回叶子节点，不做划分
         return None, leafType(dataSet)  # 直接返回
-    m, n = np.shape(dataSet)
+    m, n = np.shape(dataSet)  # 数据集合大小
     # the choice of the best feature is driven by Reduction in RSS error from mean
-    S = errType(dataSet)
+    S = errType(dataSet)  # 原来数据集合的总均方差
     bestS = np.inf
-    bestIndex, bestValue = 0, 0
-    # 遍历每一个特征：因为下标-1是y的值，不是特征
-    for featureIndex in range(n-1):
-        # 遍历当前特征的每一个取值
-        for splitVal in set(dataSet[:, featureIndex].A.ravel()):
+    bestIndex = 0
+    bestValue = 0
+    for featureIndex in range(n - 1):  # 遍历每一个特征：因为下标-1是y的值，不是特征
+        for splitVal in set(dataSet[:, featureIndex].A.ravel()):  # 遍历当前特征的每一个取值
             mat0, mat1 = binSplitDataSet(dataSet, featureIndex, splitVal)
-            if(np.shape(mat0)[0] < tolN) or (np.shape(mat1)[0] < tolN):
+            if (np.shape(mat0)[0] < tolN) or (np.shape(mat1)[0] < tolN):
                 # 如果划分之后的数据集合size太小了，直接跳过，不划分
                 continue
-            newS = errType(mat0) + errType(mat1)
-            if newS < bestS:
-                # choose best
+            newS = errType(mat0) + errType(mat1)  # 划分之后的两个小数据集合的总均方差
+            if newS < bestS:  # 选出最优值
                 bestIndex = featureIndex
                 bestValue = splitVal
                 bestS = newS
     # if the decrease (S-bestS) is less than a threshold,don't do the split
     if (S - bestS) < tolS:
         # 误差变化的幅度太小，直接返回叶子节点，不做划分
-        return None, leafType(dataSet) #exit condition 2 #退出条件2
-    mat0, mat1 = binSplitDataSet(dataSet, featureIndex, splitVal)
+        return None, leafType(dataSet)  # exit condition 2 #退出条件2
+    mat0, mat1 = binSplitDataSet(dataSet, bestIndex, bestValue)  # 最优的划分子集合
     if (np.shape(mat0)[0] < tolN) or (np.shape(mat1)[0] < tolN):  # exit condition 3
+        # 划分的子集合太小,直接返回叶子节点，不做划分
         return None, leafType(dataSet)
-    # returns the best feature to split on
+    return bestIndex, bestValue  # returns the best feature to split on
     # and the value used for that split
-    return bestIndex, bestValue
 
-
-
-#用一个全局变量，来保存最优的划分数据
-bestFeatures=[]
-bestValues=[]
 
 #递归创建回归树
 def createTree(dataSet, leafType=regLeaf, errType=regErr, ops=(1,4)):
